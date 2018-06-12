@@ -14,6 +14,9 @@ void toggleSound() {
   arduboy.audio.saveOnOff();
 }
 
+FunctionPointer currentLoop;
+
+void navigateTo (FunctionPointer fp) { currentLoop = fp; }
 bool upPressed () { return arduboy.justPressed(UP_BUTTON); }
 bool downPressed () { return arduboy.justPressed(DOWN_BUTTON); }
 bool leftPressed () { return arduboy.justPressed(LEFT_BUTTON); }
@@ -21,4 +24,4 @@ bool rightPressed () { return arduboy.justPressed(RIGHT_BUTTON); }
 bool dPadPressed () { return upPressed() or downPressed() or leftPressed() or rightPressed(); }
 bool aPressed () { return arduboy.justPressed(A_BUTTON); }
 bool bPressed () { return arduboy.justPressed(B_BUTTON); }
-bool buttonPressed() { return aPressed() or bPressed(); }
+bool buttonPressed () { return aPressed() or bPressed(); }

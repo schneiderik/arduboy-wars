@@ -1,5 +1,6 @@
 #include "global.h"
 #include "mainMenu.h"
+#include "game.h"
 
 namespace mainMenu {
   void drawMainTitle () {
@@ -15,11 +16,14 @@ namespace mainMenu {
     drawMainTitle();
   }
   
-  void update () { 
+  void update () {
+    if (buttonPressed()) {
+      navigateTo(game::loop);
+    }
   }
   
   void loop () {
-    update();
     draw();
+    update();
   }
 }

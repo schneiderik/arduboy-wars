@@ -4,6 +4,9 @@
 void setup() {
   arduboy.begin();
   arduboy.setFrameRate(FPS);
+
+  navigateTo(mainMenu::loop);
+    
   arduboy.clear();
 }
 
@@ -13,7 +16,7 @@ void loop() {
   arduboy.pollButtons();
   arduboy.clear();
   
-  mainMenu::loop();
+  currentLoop();
   
   arduboy.display();
 }

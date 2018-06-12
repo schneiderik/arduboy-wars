@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MAIN_MENU_H
+#define MAIN_MENU_H
 
 #define MAIN_TITLE_X 11
 #define MAIN_TITLE_Y 18
@@ -7,7 +7,7 @@
 namespace mainMenu {
   void loop();
   
-  const uint8_t titleImage[] PROGMEM = {
+  PROGMEM const uint8_t titleImage[] = {
     // width, height
     104, 31,
     0x80, 0x40, 0x20, 0xd0, 0x68, 0xf4, 0x74, 0xfa, 0x7a, 0xfa,
