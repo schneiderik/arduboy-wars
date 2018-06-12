@@ -1,5 +1,6 @@
 #include "global.h"
 #include "game.h"
+#include "cursor.h"
 
 namespace game {
   void draw () {
@@ -22,6 +23,8 @@ namespace game {
   }
   
   void loop () {
+    cursor::loop();
+    
     draw();
   }
 }

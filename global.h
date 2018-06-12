@@ -2,6 +2,8 @@
 #define GLOBAL_H
 
 #define FPS 60
+#define SCREEN_HEIGHT 64
+#define SCREEN_WIDTH 128
 
 #include <Arduboy2.h>
 #include <ArduboyTones.h>
