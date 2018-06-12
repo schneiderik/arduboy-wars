@@ -1,9 +1,19 @@
-void setup() {
-  // put your setup code here, to run once:
+#include "global.h"
+#include "mainMenu.h"
 
+void setup() {
+  arduboy.begin();
+  arduboy.setFrameRate(FPS);
+  arduboy.clear();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  if ((!arduboy.nextFrame())) return;
 
+  arduboy.pollButtons();
+  arduboy.clear();
+  
+  mainMenu::loop();
+  
+  arduboy.display();
 }
