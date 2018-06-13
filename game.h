@@ -2,10 +2,10 @@
 #define GAME_H
 
 #define SOLDIER_A_X 0
-#define SOLDIER_A_Y 16
+#define SOLDIER_A_Y 1
 
-#define SOLDIER_B_X 112
-#define SOLDIER_B_Y 32
+#define SOLDIER_B_X 7
+#define SOLDIER_B_Y 2
 
 namespace game {
   void loop();

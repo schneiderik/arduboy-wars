@@ -6,24 +6,16 @@ namespace cursor {
   int y = CURSOR_DEFAULT_Y;
 
   void update () {
-    if (upPressed() and y > 0) {
-      y -= CURSOR_INCREMENT; 
-    }
-    if (downPressed() and y < SCREEN_HEIGHT - CURSOR_INCREMENT) {
-      y += CURSOR_INCREMENT;
-    }
-    if (leftPressed() and x > 0) {
-      x -= CURSOR_INCREMENT; 
-    }
-    if (rightPressed() and x < SCREEN_WIDTH - CURSOR_INCREMENT) {
-      x += CURSOR_INCREMENT;
-    }  
+    if (upPressed() and y > 0) {y--;}
+    if (downPressed() and y < GRID_Y_MAX) {y++;}
+    if (leftPressed() and x > 0) {x--;}
+    if (rightPressed() and x < GRID_X_MAX) {x++;}  
   }
   
   void draw() {
     sprites.drawPlusMask(
-      x,
-      y,
+      x * GRID_SIZE,
+      y * GRID_SIZE,
       cursorImagePlusMask,
       0
     );

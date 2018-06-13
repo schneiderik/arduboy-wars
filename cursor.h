@@ -1,9 +1,8 @@
 #ifndef CURSOR_H
 #define CURSOR_H
 
-#define CURSOR_DEFAULT_X 64
-#define CURSOR_DEFAULT_Y 16
-#define CURSOR_INCREMENT 16
+#define CURSOR_DEFAULT_X 4
+#define CURSOR_DEFAULT_Y 1
 
 namespace cursor {
   void loop ();

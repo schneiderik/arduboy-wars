@@ -5,15 +5,15 @@
 namespace game {
   void draw () {
     sprites.drawPlusMask(
-      SOLDIER_A_X,
-      SOLDIER_A_Y,
+      SOLDIER_A_X * GRID_SIZE,
+      SOLDIER_A_Y * GRID_SIZE,
       soldierAImagePlusMask,
       0
     );
     
     sprites.drawPlusMask(
-      SOLDIER_B_X,
-      SOLDIER_B_Y,
+      SOLDIER_B_X * GRID_SIZE,
+      SOLDIER_B_Y * GRID_SIZE,
       soldierBImagePlusMask,
       0
     );
@@ -23,8 +23,8 @@ namespace game {
   }
   
   void loop () {
-    cursor::loop();
-    
     draw();
+    
+    cursor::loop();
   }
 }

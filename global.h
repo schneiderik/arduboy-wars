@@ -4,6 +4,11 @@
 #define FPS 60
 #define SCREEN_HEIGHT 64
 #define SCREEN_WIDTH 128
+#define GRID_SIZE 16
+#define GRID_HEIGHT SCREEN_HEIGHT/GRID_SIZE
+#define GRID_WIDTH SCREEN_WIDTH/GRID_SIZE
+#define GRID_X_MAX GRID_WIDTH - 1
+#define GRID_Y_MAX GRID_HEIGHT - 1
 
 #include <Arduboy2.h>
 #include <ArduboyTones.h>
