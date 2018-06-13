@@ -6,10 +6,10 @@ namespace cursor {
   int y = CURSOR_DEFAULT_Y;
 
   void update () {
-    if (upPressed() and y > 0) {y--;}
-    if (downPressed() and y < GRID_Y_MAX) {y++;}
-    if (leftPressed() and x > 0) {x--;}
-    if (rightPressed() and x < GRID_X_MAX) {x++;}  
+    if (upJustPressed() and y > 0) {y--;}
+    if (downJustPressed() and y < GRID_Y_MAX) {y++;}
+    if (leftJustPressed() and x > 0) {x--;}
+    if (rightJustPressed() and x < GRID_X_MAX) {x++;}
   }
   
   void draw() {

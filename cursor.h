@@ -6,6 +6,8 @@
 
 namespace cursor {
   void loop ();
+  extern int x;
+  extern int y;
 
   PROGMEM const uint8_t cursorImagePlusMask[] = {
     16, 16,

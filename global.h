@@ -21,7 +21,16 @@ extern ArduboyTones sound;
 extern FunctionPointer currentLoop;
 
 void navigateTo (FunctionPointer fp);
-void toggleSound ();
+
+bool upJustPressed ();
+bool downJustPressed ();
+bool leftJustPressed ();
+bool rightJustPressed ();
+bool dPadJustPressed ();
+bool aJustPressed ();
+bool bJustPressed ();
+bool buttonJustPressed ();
+
 bool upPressed ();
 bool downPressed ();
 bool leftPressed ();
@@ -30,5 +39,12 @@ bool dPadPressed ();
 bool aPressed ();
 bool bPressed ();
 bool buttonPressed ();
+
+bool upJustReleased ();
+bool downJustReleased ();
+bool leftJustReleased ();
+bool rightJustReleased ();
+bool aJustReleased ();
+bool bJustReleased ();
 
 #endif

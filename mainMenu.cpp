@@ -17,7 +17,7 @@ namespace mainMenu {
   }
   
   void update () {
-    if (buttonPressed()) {
+    if (buttonJustPressed()) {
       navigateTo(game::loop);
     }
   }
