@@ -9,8 +9,16 @@ namespace game {
   }
 
   void update () {
-    if (aPressed()) {
-      units::hide();
+    int unit;
+    
+    if (aJustPressed()) {
+      unit = units::atPosition(cursor::x, cursor::y);
+      
+      if (unit >= 0) {
+        units::select(unit);
+      } else {
+        units::hide();
+      }
     }
     
     if (aJustReleased()) {

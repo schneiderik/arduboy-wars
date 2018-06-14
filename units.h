@@ -1,14 +1,19 @@
 #ifndef UNITS_H
 #define UNITS_H
 
-#define SOLDIER_A_X 0
-#define SOLDIER_A_Y 1
+#define UNIT_DATA_SIZE 4
+#define UNIT_X_POSITION_INDEX 0
+#define UNIT_Y_POSITION_INDEX 1
+#define UNIT_IMAGE_INDEX 2
+#define UNIT_SELECTED_INDEX 3
 
-#define SOLDIER_B_X 7
-#define SOLDIER_B_Y 2
+#define UNIT_COUNT 2
 
 namespace units {
   void loop();
+  int atPosition(int, int);
+  void select(int);
+  void deselect(int);
   void hide();
   void show();
 
