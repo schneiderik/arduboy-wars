@@ -9,20 +9,27 @@ namespace game {
   }
 
   void update () {
-    int unit;
+    int unitAtCursorPosition;
+    int selectedUnit;
     
     if (aJustPressed()) {
-      unit = units::atPosition(cursor::x, cursor::y);
-      
-      if (unit >= 0) {
-        units::select(unit);
+      unitAtCursorPosition = units::getUnitAtPosition(cursor::x, cursor::y);
+      selectedUnit = units::getSelectedUnit();
+
+      if (selectedUnit >= 0) {
+        units::setUnitPosition(selectedUnit, cursor::x, cursor::y);
+        units::deselectUnit(selectedUnit);
       } else {
-        units::hide();
+        if (unitAtCursorPosition >= 0) {
+          units::selectUnit(unitAtCursorPosition);
+        } else {
+          units::hideUnits();
+        }
       }
     }
     
     if (aJustReleased()) {
-      units::show();
+      units::showUnits();
     }
   }
   

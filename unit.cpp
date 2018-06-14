@@ -33,7 +33,24 @@ namespace units {
     return all[index * UNIT_DATA_SIZE + UNIT_SELECTED_INDEX];
   }
 
-  int atPosition (int x, int y) {
+  void setUnitPosition (int index, int x, int y) {
+    all[index * UNIT_DATA_SIZE + UNIT_X_POSITION_INDEX] = x;
+    all[index * UNIT_DATA_SIZE + UNIT_Y_POSITION_INDEX] = y;
+  }
+
+  int getSelectedUnit () {
+    int unitIndex = -1;
+    
+    for (int index = 0; index < UNIT_COUNT; index++) {
+      if (isUnitSelected(index)) {
+        unitIndex = index;
+      }
+    }
+
+    return unitIndex;
+  }
+
+  int getUnitAtPosition (int x, int y) {
     int unitIndex = -1;
     
     for (int index = 0; index < UNIT_COUNT; index++) {
@@ -45,12 +62,20 @@ namespace units {
     return unitIndex;
   }
 
-  void select (int index) {
+  void selectUnit (int index) {
     all[index * UNIT_DATA_SIZE + UNIT_SELECTED_INDEX] = 1;
   }
 
-  void deselect (int index) {
+  void deselectUnit (int index) {
     all[index * UNIT_DATA_SIZE + UNIT_SELECTED_INDEX] = 0;
+  }
+  
+  void hideUnits () {
+    visible = false;
+  }
+
+  void showUnits () {
+    visible = true;
   }
   
   void draw () {
@@ -62,15 +87,6 @@ namespace units {
         0
       );      
     }
-  }
-
-
-  void hide () {
-    visible = false;
-  }
-
-  void show () {
-    visible = true;
   }
   
   void loop () {

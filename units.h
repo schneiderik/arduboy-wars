@@ -11,11 +11,13 @@
 
 namespace units {
   void loop();
-  int atPosition(int, int);
-  void select(int);
-  void deselect(int);
-  void hide();
-  void show();
+  int getUnitAtPosition(int, int);
+  void setUnitPosition(int, int, int);
+  int getSelectedUnit();
+  void selectUnit(int);
+  void deselectUnit(int);
+  void hideUnits();
+  void showUnits();
 
   PROGMEM const uint8_t soldierAImagePlusMask[] = {
     16, 16,
