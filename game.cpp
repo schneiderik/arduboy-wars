@@ -7,17 +7,6 @@
 
 namespace game {
   void draw () {
-    if (units::unitExistsAtPosition(cursor::position)) {
-      arduboy.fillCircle(6, 6, 2, BLACK);
-
-      Unit* unitAtCursorPosition = units::getUnitAtPosition(cursor::position);
-
-      if (unitAtCursorPosition->isSelected()) {
-        arduboy.fillCircle(12, 6, 2, BLACK);
-      } else {
-        arduboy.drawCircle(12, 6, 2, BLACK);
-      }
-    }
   }
 
   void update () {      
