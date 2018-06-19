@@ -3,33 +3,53 @@
 #include "cursor.h"
 #include "gameMap.h"
 #include "units.h"
+#include "Unit.h"
 
 namespace game {
   void draw () {
+    if (units::unitExistsAtPosition(cursor::position)) {
+      arduboy.fillCircle(6, 6, 2, BLACK);
+
+      Unit* unitAtCursorPosition = units::getUnitAtPosition(cursor::position);
+
+      if (unitAtCursorPosition->isSelected()) {
+        arduboy.fillCircle(12, 6, 2, BLACK);
+      } else {
+        arduboy.drawCircle(12, 6, 2, BLACK);
+      }
+    }
   }
 
-  void update () {
-    int unitAtCursorPosition;
-    int selectedUnit;
-    
+  void update () {      
     if (aJustPressed()) {
-      unitAtCursorPosition = units::getUnitAtPosition(cursor::x, cursor::y);
-      selectedUnit = units::getSelectedUnit();
-
-      if (selectedUnit >= 0) {
-        units::setUnitPosition(selectedUnit, cursor::x, cursor::y);
-        units::deselectUnit(selectedUnit);
-      } else {
-        if (unitAtCursorPosition >= 0) {
-          units::selectUnit(unitAtCursorPosition);
-        } else {
-          units::hideUnits();
+      if (units::unitIsCurrentlySelected()) {
+        Unit* selectedUnit = units::getSelectedUnit();
+        
+        if (selectedUnit->canMoveToPosition(cursor::position)) {
+          selectedUnit->setPosition(cursor::position);
+          selectedUnit->deselect();
         }
+      } else {
+        if (units::unitExistsAtPosition(cursor::position)) {
+          Unit* unitAtCursorPosition = units::getUnitAtPosition(cursor::position);
+          
+          unitAtCursorPosition->select();
+        } else {
+          units::hide();
+        }
+      }
+    }
+
+    if (bJustPressed()) {
+      if (units::unitIsCurrentlySelected()) {
+        Unit* selectedUnit = units::getSelectedUnit();
+        
+        selectedUnit->deselect();
       }
     }
     
     if (aJustReleased()) {
-      units::showUnits();
+      units::show();
     }
   }
   
@@ -39,5 +59,7 @@ namespace game {
     gameMap::loop();
     units::loop();
     cursor::loop();
+
+    draw();
   }
 }

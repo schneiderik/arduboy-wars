@@ -4,10 +4,11 @@
 #define CURSOR_DEFAULT_X 4
 #define CURSOR_DEFAULT_Y 1
 
+#include "Position.h"
+
 namespace cursor {
   void loop ();
-  extern int x;
-  extern int y;
+  extern Position position;
 
   PROGMEM const uint8_t cursorImagePlusMask[] = {
     16, 16,
