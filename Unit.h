@@ -38,7 +38,7 @@ class Unit {
     void draw() {
       sprites.drawPlusMask(
         position.x * GRID_SIZE,
-        position.y * GRID_SIZE - (selected ? 4 : 0),
+        position.y * GRID_SIZE,
         image,
         0
       ); 
