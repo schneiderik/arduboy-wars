@@ -10,7 +10,7 @@ namespace game {
   }
 
   void update () {
-    if (aJustPressed()) {
+    if (bJustPressed()) {
       units::update();
       
       if (units::unitIsCurrentlySelected()) {
@@ -31,7 +31,7 @@ namespace game {
       }
     }
 
-    if (bJustPressed()) {
+    if (aJustPressed()) {
       if (units::unitIsCurrentlySelected()) {
         Unit* selectedUnit = units::getSelectedUnit();
         
@@ -39,7 +39,7 @@ namespace game {
       }
     }
     
-    if (aJustReleased()) {
+    if (bJustReleased()) {
       units::show();
     }
   }
