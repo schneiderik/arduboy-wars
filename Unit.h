@@ -16,57 +16,39 @@ PROGMEM const uint8_t soldierBImagePlusMask[] = {
   0x00, 0x00, 0x00, 0x00, 0x07, 0x07, 0x05, 0x07, 0x3d, 0x3f, 0x2a, 0x3f, 0x20, 0x3f, 0x22, 0x3f, 
   0x20, 0x3f, 0x22, 0x3f, 0x3b, 0x3f, 0x0c, 0x0f, 0x07, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
+
+PROGMEM const uint8_t accessiblePositionImagePlusMask[] = {
+  16, 16,
+  0x00, 0x22, 0x00, 0x11, 0x00, 0x88, 0x00, 0x44, 0x00, 0x22, 0x00, 0x11, 0x00, 0x88, 0x00, 0x44, 
+  0x00, 0x22, 0x00, 0x11, 0x00, 0x88, 0x00, 0x44, 0x00, 0x22, 0x00, 0x11, 0x00, 0x88, 0x00, 0x44, 
+  0x00, 0x22, 0x00, 0x11, 0x00, 0x88, 0x00, 0x44, 0x00, 0x22, 0x00, 0x11, 0x00, 0x88, 0x00, 0x44, 
+  0x00, 0x22, 0x00, 0x11, 0x00, 0x88, 0x00, 0x44, 0x00, 0x22, 0x00, 0x11, 0x00, 0x88, 0x00, 0x44,
+};
     
 class Unit {
   Position position;
+  Position accessiblePositions[20];
+  int accessiblePositionIndex;
   int type;
   uint8_t *image;
   bool selected;
+  int range;
     
   public:
     Unit() {};
-  
-    Unit(int vtype, Position vposition) : type(vtype), position(vposition), selected(false) {
-      uint8_t *images[] = {
-        soldierAImagePlusMask,
-        soldierBImagePlusMask,
-      };
-  
-      image = images[type];
-    }
-    
-    void draw() {
-      sprites.drawPlusMask(
-        position.x * GRID_SIZE,
-        position.y * GRID_SIZE,
-        image,
-        0
-      ); 
-    }
-  
-    void select() {
-      selected = true;
-    }
-  
-    void deselect() {
-      selected = false;
-    }
+    Unit(int vtype, Position vposition);
 
-    bool isSelected () {
-      return selected;
-    }
-
-    Position getPosition () {
-      return position;
-    }
-
-    void setPosition (Position newPosition) {
-      position = newPosition;
-    }
-  
-    bool canMoveToPosition (Position newPosition) {
-      return true;
-    }
+    void draw();
+    void addAccessiblePositions(Position, int);
+    void clearAccessiblePositions();
+    Position updateAccessiblePositions();
+    void drawMovementRange();
+    void select();
+    void deselect();
+    bool isSelected();
+    Position getPosition();
+    void setPosition (Position);
+    bool canMoveToPosition (Position);
 };
 
 #endif
