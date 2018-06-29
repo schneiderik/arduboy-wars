@@ -18,7 +18,6 @@ namespace units {
   Unit* getSelectedUnit();
   void hide();
   void show();
-  void update();
 }
 
 #endif

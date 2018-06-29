@@ -78,6 +78,7 @@ void Unit::drawMovementRange() {
 }
 
 void Unit::select() {
+  updateAccessiblePositions();
   selected = true;
 }
 
@@ -91,10 +92,6 @@ bool Unit::isSelected () {
 
 Position Unit::getPosition () {
   return position;
-}
-
-void Unit::update () {
-  updateAccessiblePositions();
 }
 
 void Unit::setPosition (Position newPosition) {

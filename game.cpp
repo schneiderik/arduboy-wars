@@ -11,8 +11,6 @@ namespace game {
 
   void update () {
     if (bJustPressed()) {
-      units::update();
-      
       if (units::unitIsCurrentlySelected()) {
         Unit* selectedUnit = units::getSelectedUnit();
         
