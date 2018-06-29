@@ -9,8 +9,10 @@ namespace game {
   void draw () {
   }
 
-  void update () {      
+  void update () {
     if (aJustPressed()) {
+      units::update();
+      
       if (units::unitIsCurrentlySelected()) {
         Unit* selectedUnit = units::getSelectedUnit();
         

@@ -31,6 +31,12 @@ namespace units {
       all[i] = new Unit(unitType, Position(unitPositionX, unitPositionY));
     };
   }
+
+  void update () {
+    for (int index = 0; index < unitCount; index++) {
+      all[index]->update();
+    }   
+  }
   
   bool unitIsCurrentlySelected () {
     for (int index = 0; index < unitCount; index++) {

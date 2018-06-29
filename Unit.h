@@ -46,6 +46,7 @@ class Unit {
     void select();
     void deselect();
     bool isSelected();
+    void update();
     Position getPosition();
     void setPosition (Position);
     bool canMoveToPosition (Position);

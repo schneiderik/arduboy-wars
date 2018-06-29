@@ -93,10 +93,20 @@ Position Unit::getPosition () {
   return position;
 }
 
+void Unit::update () {
+  updateAccessiblePositions();
+}
+
 void Unit::setPosition (Position newPosition) {
   position = newPosition;
 }
 
-bool Unit::canMoveToPosition (Position newPosition) {
-  return true;
+bool Unit::canMoveToPosition (Position targetPosition) {
+  for (int i = 0; i < accessiblePositionIndex + 1; i++) {
+    if (accessiblePositions[i] == targetPosition) {
+      return true;
+    }
+  }
+  
+  return false;
 }
