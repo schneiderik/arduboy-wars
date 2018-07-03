@@ -6,9 +6,6 @@
 #include "Unit.h"
 
 namespace game {
-  void draw () {
-  }
-
   void update () {
     if (bJustPressed()) {
       if (units::unitIsCurrentlySelected()) {
@@ -46,7 +43,6 @@ namespace game {
     update();
     
     gameMap::loop();
-    draw();
     units::loop();
     cursor::loop();    
   }
