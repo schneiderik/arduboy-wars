@@ -7,31 +7,35 @@
 
 namespace game {
   void update () {
-    if (bJustPressed()) {
-      if (units::unitIsCurrentlySelected()) {
-        Unit* selectedUnit = units::getSelectedUnit();
-        
+    if (units::unitIsCurrentlySelected()) {
+      Unit* selectedUnit = units::getSelectedUnit();
+      
+      if (bJustPressed()) {        
         if (selectedUnit->canMoveToPosition(cursor::position)) {
           selectedUnit->setPosition(cursor::position);
           selectedUnit->deselect();
         }
-      } else {
-        if (units::unitExistsAtPosition(cursor::position)) {
-          Unit* unitAtCursorPosition = units::getUnitAtPosition(cursor::position);
-          
-          unitAtCursorPosition->select();
-        } else {
-          units::hide();
-        }
       }
-    }
-
-    if (aJustPressed()) {
-      if (units::unitIsCurrentlySelected()) {
-        Unit* selectedUnit = units::getSelectedUnit();
-        
+      
+      if (aJustPressed()) {
         selectedUnit->deselect();
       }
+
+      return;
+    }
+
+    if (units::unitExistsAtPosition(cursor::position)) {
+      Unit* unitAtCursorPosition = units::getUnitAtPosition(cursor::position);
+      
+      if (bJustPressed()) {
+        unitAtCursorPosition->select();
+      }
+
+      return;
+    }
+    
+    if (bJustPressed()) {
+      units::hide();
     }
     
     if (bJustReleased()) {
