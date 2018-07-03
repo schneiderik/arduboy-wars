@@ -1,7 +1,7 @@
 #include "global.h"
 #include "units.h"
   
-Unit::Unit(int vtype, Position vposition) : type(vtype), position(vposition), selected(false) {
+Unit::Unit(int vtype, Position vposition) : type(vtype), position(vposition), drawPosition(vposition), selected(false) {
   uint8_t *images[] = {
     soldierAImagePlusMask,
     soldierBImagePlusMask,
@@ -18,8 +18,8 @@ void Unit::draw() {
   }
   
   sprites.drawPlusMask(
-    position.x * GRID_SIZE,
-    position.y * GRID_SIZE,
+    drawPosition.x * GRID_SIZE,
+    drawPosition.y * GRID_SIZE,
     image,
     0
   ); 
@@ -83,6 +83,7 @@ void Unit::select() {
 }
 
 void Unit::deselect() {
+  drawPosition = position;
   selected = false;
 }
 
@@ -94,8 +95,12 @@ Position Unit::getPosition () {
   return position;
 }
 
-void Unit::setPosition (Position newPosition) {
-  position = newPosition;
+void Unit::setPosition (Position targetPosition) {
+  position = targetPosition;
+}
+
+void Unit::setDrawPosition (Position targetPosition) {
+  drawPosition = targetPosition;
 }
 
 bool Unit::canMoveToPosition (Position targetPosition) {

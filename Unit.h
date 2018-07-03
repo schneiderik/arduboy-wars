@@ -27,6 +27,7 @@ PROGMEM const uint8_t accessiblePositionImagePlusMask[] = {
     
 class Unit {
   Position position;
+  Position drawPosition;
   Position accessiblePositions[20];
   int accessiblePositionIndex;
   int type;
@@ -48,6 +49,7 @@ class Unit {
     bool isSelected();
     Position getPosition();
     void setPosition (Position);
+    void setDrawPosition (Position);
     bool canMoveToPosition (Position);
 };
 

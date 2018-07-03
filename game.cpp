@@ -9,6 +9,10 @@ namespace game {
   void update () {
     if (units::unitIsCurrentlySelected()) {
       Unit* selectedUnit = units::getSelectedUnit();
+
+      if (selectedUnit->canMoveToPosition(cursor::position)) { 
+        selectedUnit->setDrawPosition(cursor::position);
+      }
       
       if (bJustPressed()) {        
         if (selectedUnit->canMoveToPosition(cursor::position)) {
